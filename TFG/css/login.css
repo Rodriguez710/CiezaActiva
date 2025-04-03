@@ -1,0 +1,109 @@
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Esto asegura que el contenido ocupa toda la altura de la ventana */
+}
+
+/* Estilo para el formulario de login */
+.formulario-login {
+    background-color: white;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+
+/* Formulario */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="password"], input[type="email"] {
+    padding: 10px;
+}
+
+/* Botón */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login p a {
+    color: #222;
+    text-decoration: none;
+}
+
+.login p a:hover {
+    text-decoration: underline;
+}
+
+/* Pie de página */
+footer {
+    background-color: #222;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Esto hace que el pie se quede al final */
+}
+
+footer .contacto p {
+    margin: 0;
+}
+
+footer .redes-sociales a img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .formulario-login {
+        width: 90%;
+        padding: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+footer .redes-sociales a img {
+    width: 30px;
+    height: 30px; /* Asegura que todas tengan la misma altura */
+    object-fit: cover; /* Evita deformaciones manteniendo la proporción */
+    margin-right: 10px;
+}
+

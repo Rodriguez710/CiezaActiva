@@ -1,0 +1,334 @@
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Esto asegura que el contenido ocupa toda la altura de la ventana */
+}
+
+/* Cabecera */
+header {
+    background-color: #5e5e5e; /* Gris suave */
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    width: 120px; /* Tamaño del logo aumentado */
+    height: auto;
+}
+
+/* Menú centrado */
+header nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    background-color: #e60000; /* Fondo rojo para el menú */
+    padding: 10px 20px; /* Espacio dentro del recuadro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+header nav ul li a {
+    color: white; /* Texto blanco para el menú */
+    text-decoration: none;
+    font-size: 16px;
+    display: block; /* Hace que el enlace ocupe todo el espacio */
+    text-align: center;
+}
+
+header nav ul li:hover {
+    background-color: #b30000; /* Rojo oscuro al pasar el mouse */
+}
+
+header nav ul li a:hover {
+    color: #fff; /* Mantener texto blanco al pasar el ratón */
+}
+
+
+/* Imagen campo de fútbol */
+.imagen-campo-futbol img {
+    width: 150px; /* Tamaño reducido */
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Centra la imagen */
+}
+
+/* Sección con Instalaciones Deportivas y Eventos Públicos al lado */
+.secciones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.secciones .instalaciones, .secciones .eventos {
+    text-align: center;
+    width: 45%; /* Cada sección ocupa el 45% del ancho */
+}
+
+.secciones img {
+    width: 100px; /* Tamaño de las imágenes */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.secciones .btn {
+    background-color: #e60000; /* Rojo claro */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+secciones .btn:hover {
+    background-color: #b30000; /* Rojo oscuro */
+}
+
+/* Pie de página */
+footer {
+    background-color: #333; /* Gris oscuro */
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: auto; /* Hace que el pie se quede al final */
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #e60000; /* Rojo claro para los títulos */
+}
+
+.contacto, .redes-sociales {
+    width: 48%; /* Cada bloque ocupa el 48% del ancho */
+    margin-bottom: 20px;
+}
+
+.contacto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.redes-sociales .redes a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.redes-sociales .redes a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+.redes-sociales .redes a p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.redes-sociales a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contacto, .redes-sociales {
+        width: 100%; /* Ambos bloques ocuparán todo el ancho en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .redes-sociales .redes a {
+        justify-content: center;
+    }
+}
+
+
+.contacto, .redes-sociales {
+    width: 48%; /* Cada bloque ocupa el 48% del ancho */
+    margin-bottom: 20px;
+}
+
+.contacto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.redes-sociales .redes a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.redes-sociales .redes a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+.redes-sociales .redes a p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.redes-sociales a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contacto, .redes-sociales {
+        width: 100%; /* Ambos bloques ocuparán todo el ancho en pantallas pequeñas */
+        text-align: center;
+    }
+
+    .redes-sociales .redes a {
+        justify-content: center;
+    }
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .login-cart {
+        margin-top: 10px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Secciones una debajo de la otra en pantallas pequeñas */
+    .secciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .secciones .instalaciones, .secciones .eventos {
+        width: 90%; /* Aumenta el tamaño en pantallas pequeñas */
+        margin-bottom: 20px;
+    }
+
+    .secciones img {
+        width: 120px; /* Tamaño de las imágenes ajustado en pantallas pequeñas */
+    }
+
+}
+footer .redes-sociales a img {
+    width: 30px;
+    height: 30px; /* Asegura que todas tengan la misma altura */
+    object-fit: cover; /* Evita deformaciones manteniendo la proporción */
+    margin-right: 10px;
+}
+
+.secciones {
+    display: flex;
+    justify-content: center; /* Centra los elementos */
+    align-items: center;
+    gap: 40px; /* Reduce la separación entre las dos secciones */
+    margin-top: 30px;
+}
+
+.secciones img {
+    width: 300px; /* Tamaño más grande */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.secciones .instalaciones, 
+.secciones .eventos {
+    text-align: center;
+    width: 42%; /* Reduce el ancho de cada sección para acercarlas */
+}
+
+/* Contenedor de los íconos de Login y Carrito */
+header .login-cart {
+    display: flex;
+    justify-content: space-between; /* Espacio equitativo entre los íconos */
+    align-items: center;
+    width: 130px; /* Ancho ajustado para que los íconos estén más cerca */
+}
+
+/* Estilo de los enlaces (carrito y login) */
+header .login-cart a {
+    color: #ee0707; /* Rojo brillante */
+    text-decoration: none;
+    margin: 20 20px; /* Espacio reducido entre los íconos (más cercanos) */
+}
+
+/* Tamaño de los íconos (más grandes) */
+header .login-cart a img {
+    width: 50px; /* Aumento el tamaño de los íconos */
+    height: 50px;
+}
+
+/* Asegura que los íconos no cambien de tamaño en pantallas pequeñas */
+@media (max-width: 768px) {
+    header .login-cart {
+        width: 120px; /* Ancho ajustado para pantallas pequeñas */
+    }
+
+    header .login-cart a img {
+        width: 28px; /* Tamaño ajustado para pantallas pequeñas */
+        height: 28px;
+    }
+}
+
+

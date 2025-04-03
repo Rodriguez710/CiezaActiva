@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Públicos</title>
+    <link rel="stylesheet" href="css/eventos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="reservas.html">Instalaciones Deportivas</a></li>
+                <li><a href="eventos.html" class="active">Eventos Públicos</a></li>
+            </ul>
+        </nav>
+        <div class="login-cart">
+            <a href="login.html"><img src="img/login.png" alt="Login"></a>
+            <a href="carrito.html"><img src="img/carrito.png" alt="Carrito"></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="filtro-eventos">
+            <h2>Eventos Públicos</h2>
+            <label for="categoria">Filtrar por categoría:</label>
+            <select id="categoria">
+                <option value="todos">Todos</option>
+                <option value="concierto">Conciertos</option>
+                <option value="feria">Ferias</option>
+                <option value="teatro">Teatro</option>
+            </select>
+        </section>
+
+        <section id="lista-eventos">
+            <div class="evento" data-categoria="concierto">
+                <img src="img/evento_concierto.jpg" alt="Concierto">
+                <h3>Concierto de Rock</h3>
+                <p>📍 Madrid - 10 de Mayo</p>
+                <p>🎟️ Entrada: 20€</p>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+
+            <div class="evento" data-categoria="feria">
+                <img src="img/evento_feria.jpg" alt="Feria">
+                <h3>Feria Gastronómica</h3>
+                <p>📍 Barcelona - 15 de Abril</p>
+                <p>🎟️ Entrada Gratuita</p>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+
+            <div class="evento" data-categoria="teatro">
+                <img src="img/evento_teatro.jpg" alt="Teatro">
+                <h3>Obra de Teatro: Hamlet</h3>
+                <p>📍 Sevilla - 5 de Junio</p>
+                <p>🎟️ Entrada: 15€</p>
+                <a href="#" class="btn">Ver Más</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-contenido">
+            <div class="contacto">
+                <h3>Contacto</h3>
+                <p>📞 Teléfono: 123-456-789</p>
+                <p>📧 Email: contacto@empresa.com</p>
+            </div>
+            
+            <div class="redes-sociales">
+                <h3>Redes Sociales</h3>
+                <div class="redes">
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="img/instagram.png" alt="Instagram">
+                        <p>Instagram</p>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <img src="img/twitter.png" alt="Twitter">
+                        <p>Twitter</p>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank">
+                        <img src="img/tiktok.png" alt="TikTok">
+                        <p>TikTok</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

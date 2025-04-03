@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="formulario-registro">
+            <h2>Registrarse</h2>
+            <form action="#" method="POST">
+                <!-- Nombre -->
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <!-- Apellidos -->
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+
+                <!-- Correo electrónico -->
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
+
+                <!-- Teléfono -->
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej:  609 594 078" required>
+
+                <!-- Fecha de Nacimiento -->
+                <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+
+                <!-- Dirección -->
+                <label for="direccion">Dirección (opcional)</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle Falsa 123">
+
+                <!-- Contraseña -->
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+
+                <!-- Confirmar Contraseña -->
+                <label for="confirmar-password">Confirmar Contraseña</label>
+                <input type="password" id="confirmar-password" name="confirmar-password" required>
+
+                <!-- Botón de Registro -->
+                <button type="submit" class="btn">Registrarse</button>
+
+                <!-- Enlace a Login -->
+                <p class="login">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contacto">
+            <p>📞 Contacto: +34 609 594 078</p>
+        </div>
+        <div class="redes-sociales">
+            <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="img/tiktok.png" alt="TikTok"></a>
+        </div>
+    </footer>
+</body>
+</html>
