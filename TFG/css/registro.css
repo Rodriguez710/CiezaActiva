@@ -1,28 +1,53 @@
 /* Estilos generales para el cuerpo */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Esto asegura que el contenido ocupa toda la altura de la ventana */
+    min-height: 100vh;
+}
+
+/* Cabecera */
+header {
+    background-color: #5e5e5e;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    width: 90px;  /* Tamaño más pequeño del logo */
+    height: auto;
+}
+
+/* Contenedor principal centrado */
+main {
+    flex: 1;  /* Ocupa el espacio disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 /* Estilo para el formulario de registro */
 .formulario-registro {
-    background-color: white;
+    background-color: #333;
     padding: 30px;
     width: 300px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 50px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Títulos */
+/* Título */
 h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #e60000;
 }
 
 /* Etiquetas */
@@ -36,15 +61,17 @@ input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 5px;
+    background-color: #444;
+    color: #fff;
 }
 
-input[type="date"] {
-    padding: 10px;
-}
-
-input[type="tel"], input[type="text"], input[type="email"], input[type="password"] {
+input[type="date"],
+input[type="tel"],
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     padding: 10px;
 }
 
@@ -52,12 +79,16 @@ input[type="tel"], input[type="text"], input[type="email"], input[type="password
 .btn {
     width: 100%;
     padding: 10px;
-    background-color: #222;
+    background-color: #e60000;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #b30000;
 }
 
 /* Texto de login */
@@ -71,43 +102,116 @@ input[type="tel"], input[type="text"], input[type="email"], input[type="password
 }
 
 .login p a {
-    color: #222;
+    color: #ff9900;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .login p a:hover {
     text-decoration: underline;
 }
-
-/* Pie de página */
+/* Footer */
 footer {
-    background-color: #222;
+    background-color: #333;
     color: white;
-    padding: 15px 20px;
+    padding: 10px 40px;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: auto;
+    border-top: 2px solid #e60000;
+    min-height: 120px;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+footer h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #e60000;
+}
+
+.contacto, .redes-sociales, .enlaces-rapidos {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.redes-sociales .redes a {
+    display: flex;
     align-items: center;
-    margin-top: auto; /* Esto hace que el pie se quede al final */
+    text-decoration: none;
+    color: #ffcc00;
+    margin-bottom: 8px;
 }
 
-footer .contacto p {
-    margin: 0;
+.redes-sociales .redes a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
 }
 
-footer .redes-sociales a img {
-    width: 30px;
-    margin-right: 10px;
+footer .footer-contenido a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+footer .footer-contenido a:hover {
+    color: #e60000;
+    text-decoration: underline;
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
-    .formulario-registro {
-        width: 90%;
-        padding: 20px;
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .login-cart {
+        margin-top: 10px;
+        width: 120px;
+    }
+
+    header .login-cart a img {
+        width: 40px;
+        height: 40px;
     }
 
     footer {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
+
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contacto, .redes-sociales, .enlaces-rapidos {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contacto p, .redes-sociales .redes a p {
+        font-size: 16px;
+    }
+
+    .eventos-publicos {
+        grid-template-columns: 1fr;
+    }
 }
+
+

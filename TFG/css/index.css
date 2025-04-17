@@ -21,8 +21,29 @@ header {
 }
 
 header .logo img {
-    width: 120px; /* Tamaño del logo aumentado */
+    width: 120px; /* Tamaño original del logo ajustado a 100px */
     height: auto;
+}
+
+/* Contenedor de los íconos de Login y Carrito */
+header .login-cart {
+    display: flex;
+    justify-content: space-between; /* Espacio equitativo entre los íconos */
+    align-items: center;
+    width: 130px; /* Ancho ajustado para que los íconos estén más cerca */
+}
+
+/* Estilo de los enlaces (carrito y login) */
+header .login-cart a {
+    color: #ee0707; /* Rojo brillante */
+    text-decoration: none;
+    margin: 20 20px; /* Espacio reducido entre los íconos (más cercanos) */
+}
+
+/* Tamaño de los íconos (ajustado a 40px) */
+header .login-cart a img {
+    width: 50px; /* Tamaño ajustado de los íconos a 50px */
+    height: 50px;
 }
 
 /* Menú centrado */
@@ -60,29 +81,22 @@ header nav ul li a:hover {
     color: #fff; /* Mantener texto blanco al pasar el ratón */
 }
 
-
-/* Imagen campo de fútbol */
-.imagen-campo-futbol img {
-    width: 150px; /* Tamaño reducido */
-    height: auto;
-    display: block;
-    margin: 20px auto; /* Centra la imagen */
-}
-
-/* Sección con Instalaciones Deportivas y Eventos Públicos al lado */
+/* Sección de Instalaciones y Eventos */
 .secciones {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Centra los elementos */
+    align-items: center;
+    gap: 40px; /* Reduce la separación entre las dos secciones */
     margin-top: 30px;
 }
 
 .secciones .instalaciones, .secciones .eventos {
     text-align: center;
-    width: 45%; /* Cada sección ocupa el 45% del ancho */
+    width: 42%; /* Reduce el ancho de cada sección para acercarlas */
 }
 
 .secciones img {
-    width: 100px; /* Tamaño de las imágenes */
+    width: 300px; /* Tamaño más grande */
     height: auto;
     display: block;
     margin: 0 auto;
@@ -99,20 +113,22 @@ header nav ul li a:hover {
     font-size: 16px;
 }
 
-secciones .btn:hover {
+.secciones .btn:hover {
     background-color: #b30000; /* Rojo oscuro */
 }
 
-/* Pie de página */
+/* Estilos del Pie de Página (Footer) */
 footer {
     background-color: #333; /* Gris oscuro */
     color: white;
-    padding: 20px 40px;
+    padding: 10px 40px; /* Reducido el padding para ocupar menos espacio vertical */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
     margin-top: auto; /* Hace que el pie se quede al final */
+    border-top: 2px solid #e60000; /* Línea roja en la parte superior */
+    min-height: 120px; /* Establezco una altura mínima para el footer */
 }
 
 .footer-contenido {
@@ -123,44 +139,49 @@ footer {
 }
 
 footer h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 5px; /* Reducido el margen inferior */
+    font-size: 16px; /* Tamaño de fuente reducido */
     color: #e60000; /* Rojo claro para los títulos */
 }
 
-.contacto, .redes-sociales {
-    width: 48%; /* Cada bloque ocupa el 48% del ancho */
-    margin-bottom: 20px;
+/* Estilos para las secciones de contacto, redes sociales y enlaces rápidos */
+.contacto, .redes-sociales, .enlaces-rapidos {
+    width: 30%; /* Ajustado para que queden al lado */
+    margin-bottom: 10px; /* Reducido el margen inferior */
 }
 
 .contacto p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 14px; /* Mantengo el tamaño del texto */
 }
 
 .redes-sociales .redes a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: white;
-    margin-bottom: 15px;
+    color: #ffcc00; /* Color azul para los enlaces de redes sociales */
+    margin-bottom: 8px; /* Reducido el margen inferior */
 }
 
 .redes-sociales .redes a img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px; /* Espacio entre el logo y el texto */
+    width: 20px; /* Tamaño ajustado de los íconos a 40px */
+    height: 20px;
+    margin-right: 6px; /* Espacio entre el logo y el texto */
 }
 
-.redes-sociales .redes a p {
-    font-size: 14px;
-    margin: 0;
+/* Enlaces rápidos en el footer */
+footer .footer-contenido a {
+    color: #ffcc00; /* Color dorado o cálido para los enlaces rápidos */
+    text-decoration: none;
+    font-size: 13px; /* Tamaño reducido */
 }
 
-.redes-sociales a:hover {
+footer .footer-contenido a:hover {
+    color: #e60000; /* Rojo claro al pasar el ratón */
     text-decoration: underline;
 }
 
+/* --- Responsividad --- */
 @media (max-width: 768px) {
     footer {
         flex-direction: column;
@@ -172,74 +193,15 @@ footer h3 {
         align-items: center;
     }
 
-    .contacto, .redes-sociales {
-        width: 100%; /* Ambos bloques ocuparán todo el ancho en pantallas pequeñas */
+    .contacto, .redes-sociales, .enlaces-rapidos {
+        width: 100%; /* Todos los bloques ocuparán todo el ancho en pantallas pequeñas */
         text-align: center;
     }
 
-    .redes-sociales .redes a {
-        justify-content: center;
-    }
-}
-
-
-.contacto, .redes-sociales {
-    width: 48%; /* Cada bloque ocupa el 48% del ancho */
-    margin-bottom: 20px;
-}
-
-.contacto p {
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-.redes-sociales .redes a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.redes-sociales .redes a img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px; /* Espacio entre el logo y el texto */
-}
-
-.redes-sociales .redes a p {
-    font-size: 14px;
-    margin: 0;
-}
-
-.redes-sociales a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    footer {
-        flex-direction: column;
-        align-items: center;
+    .contacto p, .redes-sociales .redes a p {
+        font-size: 16px; /* Aumenta el tamaño de la fuente para que se vea mejor en móviles */
     }
 
-    .footer-contenido {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .contacto, .redes-sociales {
-        width: 100%; /* Ambos bloques ocuparán todo el ancho en pantallas pequeñas */
-        text-align: center;
-    }
-
-    .redes-sociales .redes a {
-        justify-content: center;
-    }
-}
-
-
-/* Responsividad */
-@media (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
@@ -269,66 +231,12 @@ footer h3 {
         width: 120px; /* Tamaño de las imágenes ajustado en pantallas pequeñas */
     }
 
-}
-footer .redes-sociales a img {
-    width: 30px;
-    height: 30px; /* Asegura que todas tengan la misma altura */
-    object-fit: cover; /* Evita deformaciones manteniendo la proporción */
-    margin-right: 10px;
-}
-
-.secciones {
-    display: flex;
-    justify-content: center; /* Centra los elementos */
-    align-items: center;
-    gap: 40px; /* Reduce la separación entre las dos secciones */
-    margin-top: 30px;
-}
-
-.secciones img {
-    width: 300px; /* Tamaño más grande */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.secciones .instalaciones, 
-.secciones .eventos {
-    text-align: center;
-    width: 42%; /* Reduce el ancho de cada sección para acercarlas */
-}
-
-/* Contenedor de los íconos de Login y Carrito */
-header .login-cart {
-    display: flex;
-    justify-content: space-between; /* Espacio equitativo entre los íconos */
-    align-items: center;
-    width: 130px; /* Ancho ajustado para que los íconos estén más cerca */
-}
-
-/* Estilo de los enlaces (carrito y login) */
-header .login-cart a {
-    color: #ee0707; /* Rojo brillante */
-    text-decoration: none;
-    margin: 20 20px; /* Espacio reducido entre los íconos (más cercanos) */
-}
-
-/* Tamaño de los íconos (más grandes) */
-header .login-cart a img {
-    width: 50px; /* Aumento el tamaño de los íconos */
-    height: 50px;
-}
-
-/* Asegura que los íconos no cambien de tamaño en pantallas pequeñas */
-@media (max-width: 768px) {
     header .login-cart {
         width: 120px; /* Ancho ajustado para pantallas pequeñas */
     }
 
     header .login-cart a img {
-        width: 28px; /* Tamaño ajustado para pantallas pequeñas */
-        height: 28px;
+        width: 40px; /* Tamaño ajustado a 40px para los íconos en pantallas pequeñas */
+        height: 40px;
     }
 }
-
-

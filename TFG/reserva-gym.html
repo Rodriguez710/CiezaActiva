@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas - Instalaciones Deportivas</title>
-    <link rel="stylesheet" href="css/reservas.css">
+    <title>Reserva Campo de Fútbol</title>
+    <link rel="stylesheet" href="css/instalaciones.css">
 </head>
 <body>
     <header>
@@ -26,44 +26,29 @@
 
     <main>
         <section class="descripcion">
-            <h2>Reservar Instalación Deportiva</h2>
-        </section>
+            <h2>Reserva Gimnasio</h2>
+            <div class="detalles">
+                <div class="imagen">
+                    <img src="img/gym.jpg" alt="Gimnasio">
+                </div>
+                <div class="informacion">
+                    <h3>Gimnasio</h3>
+                    <p>Precio por 1 hora: 5€</p>
+                    <p></p>
+                    <p>Se puede cancelar hasta 24 horas antes de la reserva.</p>
+                    
+                    <h4>Selecciona la fecha:</h4>
+                    <div id="calendar"></div> <!-- Aquí se mostrará el calendario -->
 
-        <section class="reservas-deportivas">
-            <div class="instalacion">
-                <img src="img/Futbol.webp" alt="Campo de Fútbol">
-                <h3>Campo de Fútbol</h3>
-                <a href="reservas-futbol.html" class="btn">Reservar</a>
-            </div>
+                    <div id="hora-selection" style="display: none;">
+                        <label for="hora-inicio">Hora de inicio:</label>
+                        <select id="hora-inicio"></select>
 
-            <div class="instalacion">
-                <img src="img/Baloncesto.jpg" alt="Pista de Baloncesto">
-                <h3>Pista de Baloncesto</h3>
-                <a href="reservas-baloncesto.html" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/tennis.jpg" alt="Pista de Tenis">
-                <h3>Pista de Tenis</h3>
-                <a href="reservas-tennis.html" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/Padel.jpg" alt="Pista de Padel">
-                <h3>Pista de Padel</h3>
-                <a href="reservas-padel.html" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/Sala.png" alt="Pista de Futbol Sala">
-                <h3>Pista de Futbol Sala</h3>
-                <a href="reservas-sala.html" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/gym.jpg" alt="Gimnasio">
-                <h3>Gimnasio</h3>
-                <a href="reserva-gym.html" class="btn">Reservar</a>
+                        <label for="hora-fin">Hora de fin:</label>
+                        <select id="hora-fin"></select>
+                    </div>
+                    <button id="reservar-btn" style="display: none;">Reservar</button>
+                </div>
             </div>
         </section>
     </main>
@@ -115,5 +100,7 @@
             </form>
         </div>
     </footer>
+    <!-- Agregar el enlace al script al final del body -->
+    <script src="js/calendario.js"></script> <!-- Enlace a tu script de calendario -->
 </body>
 </html>
