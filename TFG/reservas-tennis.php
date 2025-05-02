@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva Campo de Fútbol</title>
     <link rel="stylesheet" href="css/instalaciones.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -13,7 +15,7 @@
         </div>
         <nav class="menu">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.php">Inicio</a></li>
                 <li><a href="reservas.html" class="active">Instalaciones Deportivas</a></li>
                 <li><a href="eventos.html">Eventos Públicos</a></li>
             </ul>
@@ -26,19 +28,39 @@
 
     <main>
         <section class="descripcion">
-            <h2>Reserva pista de baloncesto</h2>
+            <h2>Reserva pista de tennis</h2>
             <div class="detalles">
                 <div class="imagen">
-                    <img src="img/Baloncesto.jpg" alt="Pista de baloncesto">
+                    <img src="img/tennis.jpg" alt="Pista de tennis">
                 </div>
                 <div class="informacion">
-                    <h3>Pista de baloncesto</h3>
-                    <p>Precio por 1 hora: 15€</p>
+                    <h3>Pista de tennis</h3>
+                    <p>Precio por 1 hora: 10€</p>
                     <p>A partir de las 20:00, se aplicará un suplemento de 2€ debido a la iluminación artificial.</p>
                     <p>Se puede cancelar hasta 24 horas antes de la reserva.</p>
-                    
+
                     <h4>Selecciona la fecha:</h4>
-                    <div id="calendar"></div> <!-- Aquí se mostrará el calendario -->
+                    <div id="calendar">
+                        <input type="hidden" id="fecha-seleccionada" name="fecha">
+
+                        <div id="hora-selection" style="display: none;">
+                            <label for="hora">Selecciona una hora:</label>
+                            <select id="hora" name="hora">
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                                <option value="20:00">20:00</option>
+                            </select>
+                        </div>
+
+                        <button id="reservar-btn" style="display: none;">Reservar</button>
+                    </div> <!-- Aquí se mostrará el calendario -->
 
                     <div id="hora-selection" style="display: none;">
                         <label for="hora-inicio">Hora de inicio:</label>
@@ -62,7 +84,7 @@
                 <p>📍 Dirección: Calle Ejemplo 123, Ciudad</p>
                 <p>🕒 Horario: Lunes - Viernes, 9 AM - 6 PM</p>
             </div>
-            
+
             <div class="redes-sociales">
                 <h3>Redes Sociales</h3>
                 <div class="redes">
@@ -80,7 +102,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="enlaces-adicionales">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
@@ -91,7 +113,7 @@
                 </ul>
             </div>
         </div>
-    
+
         <div class="suscripcion">
             <h3>Suscríbete a nuestro boletín</h3>
             <form action="#" method="POST">
@@ -102,6 +124,7 @@
     </footer>
 
     <!-- Agregar el enlace al script al final del body -->
-    <script src="js/calendario.js"></script> <!-- Enlace a tu script de calendario -->
+    <script src="js/calendarioPJ.js"></script> <!-- Enlace a tu script de calendario -->
 </body>
+
 </html>

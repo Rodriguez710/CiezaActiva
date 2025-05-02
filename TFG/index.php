@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
+    <?php include 'config.php'; ?>
     <!-- Cabecera -->
     <header>
         <div class="logo">
