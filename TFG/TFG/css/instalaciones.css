@@ -1,0 +1,468 @@
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+/* Cabecera */
+header {
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Contenedor de los íconos de Login y Carrito */
+header .login-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 130px;
+}
+
+header .login-cart a {
+    color: #e67c7a;
+    text-decoration: none;
+    margin: 20 20px;
+}
+
+header .login-cart a img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Menú centrado */
+header nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    background-color: #e67c7a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+header nav ul li:hover {
+    background-color: #e67c7a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
+
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    text-align: center;
+}
+
+header nav ul li:hover {
+    background-color: #e67c7a;
+}
+
+header nav ul li a:hover {
+    color: #fff;
+}
+
+/* Estilo de la reserva */
+main {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.descripcion {
+    text-align: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.detalles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.detalles .imagen {
+    width: 50%;
+    padding: 20px;
+}
+
+.detalles .imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detalles .informacion {
+    width: 50%;
+    padding: 20px;
+}
+
+.detalles .informacion h3 {
+    color: #e67c7a;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.detalles .informacion p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.detalles .informacion label {
+    display: block;
+    margin-top: 10px;
+}
+
+.detalles .informacion select,
+.detalles .informacion input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.detalles .informacion button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e67c7a;
+    color: rgb(59, 59, 59);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.detalles .informacion button:hover {
+    background-color: #e67c7a;
+}
+
+/* Calendario */
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#calendar-prev,
+#calendar-next {
+    background-color: #e67c7a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#calendar-prev:hover,
+#calendar-next:hover {
+    background-color: #b30000;
+}
+
+#calendar-month-year {
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+#calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.calendar-day-name {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+#calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    background-color: #0c0c0c;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+}
+
+.calendar-day:hover {
+    background-color: #e67c7a;
+}
+
+.calendar-day:active {
+    background-color: #070707;
+}
+
+.calendar-day.selected {
+    background-color: #e60000;
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.disabled {
+    background-color: #000000;
+    cursor: not-allowed;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border-top: 2px solid #e67c7a;
+    min-height: 120px;
+    margin-top: auto;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+footer h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #e67c7a;
+}
+
+.contacto,
+.redes-sociales,
+.enlaces-rapidos {
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.redes-sociales .redes a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffcc00;
+    margin-bottom: 8px;
+}
+
+.redes-sociales .redes a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+}
+
+footer .footer-contenido a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+footer .footer-contenido a:hover {
+    color: #e67c7a;
+    text-decoration: underline;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .login-cart {
+        margin-top: 10px;
+        width: 120px;
+    }
+
+    header .login-cart a img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .detalles {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detalles .imagen img {
+        width: 80%;
+    }
+
+    .detalles .informacion {
+        width: 90%;
+        text-align: center;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contacto,
+    .redes-sociales,
+    .enlaces-rapidos {
+        width: 100%;
+    }
+
+    .contacto p,
+    .redes-sociales .redes a p {
+        font-size: 16px;
+    }
+}
+
+/*CSS CALENDARIO */
+
+#calendar {
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 1em;
+    max-width: 420px;
+    margin: 0 auto;
+    border: 2px solid #e67c7a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #754040;
+    font-size: 16px;
+}
+
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+.cal-header button {
+    background-color: #e67c7a;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cal-header button:hover {
+    background-color: #e67c7a;
+}
+
+.cal-days, .cal-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5em;
+    text-align: center;
+}
+
+.cal-days div, .cal-dates div {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+.cal-days div {
+    font-weight: bold;
+    color: #ffcc00;
+    background-color: #333;
+}
+
+.cal-day {
+    cursor: pointer;
+    background: #444;
+    color: white;
+    transition: background 0.3s;
+}
+
+.cal-day:hover {
+    background: #666;
+}
+
+.cal-day.selected {
+    background: #2a9d8f;
+    color: white;
+    font-weight: bold;
+}
+
+.empty {
+    visibility: hidden;
+}
+
