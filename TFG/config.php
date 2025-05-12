@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -23,11 +22,14 @@ mysqli_select_db($conn, $dbname);
 
 // Crear tabla Usuarios
 $sql = "CREATE TABLE IF NOT EXISTS Usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100),
-    apellidos VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    telefono VARCHAR(20)
+    id INT AUTO_INCREMENT PRIMARY KEY,         -- Identificador único para cada usuario
+    nombre VARCHAR(100) NOT NULL,               -- Nombre del usuario
+    apellidos VARCHAR(100) NOT NULL,            -- Apellidos del usuario
+    email VARCHAR(100) UNIQUE NOT NULL,         -- Correo electrónico único
+    telefono VARCHAR(20) NOT NULL,              -- Número de teléfono
+    fecha_nacimiento DATE NOT NULL,             -- Fecha de nacimiento
+    direccion VARCHAR(255) DEFAULT NULL,        -- Dirección (opcional)
+    password VARCHAR(255) NOT NULL              -- Contraseña cifrada
 )";
 mysqli_query($conn, $sql) or die("Error creando tabla Usuarios: " . mysqli_error($conn));
 
@@ -62,11 +64,4 @@ $sql = "CREATE TABLE IF NOT EXISTS Reservas (
     FOREIGN KEY (instalacion_id) REFERENCES Instalaciones(id)
 )";
 mysqli_query($conn, $sql) or die("Error creando tabla Reservas: " . mysqli_error($conn));
-
-// Mensaje final
-echo "Base de datos y tablas creadas correctamente.";
-
-// Cerrar conexión
-mysqli_close($conn);
-
 ?>
