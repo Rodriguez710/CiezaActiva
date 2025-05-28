@@ -1,45 +1,62 @@
 <?php
-// Incluir el archivo de configuración para manejar sesiones y base de datos
-include 'config.php';
-
-// Verificar si el usuario ha iniciado sesión
+// Inicia sesión si es necesario
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Reservas</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>Reservas - Instalaciones Deportivas</title>
+    <link rel="stylesheet" href="css/reservas.css">
 </head>
 <body>
-    <!-- Incluir el archivo de la cabecera -->
+
     <?php include 'header.php'; ?>
 
-    <!-- Imagen campo de fútbol encima de Instalaciones Deportivas -->
+    <main>
+        <section class="descripcion">
+            <h2>Reservar Instalación Deportiva</h2>
+        </section>
 
-    <!-- Sección de Instalaciones Deportivas y Eventos Públicos (lado a lado) -->
-    <section class="secciones">
-        <!-- Instalaciones Deportivas -->
-        <div class="instalaciones">
-            <img src="img/ComplejoDeportivo.png" alt="Instalaciones Deportivas">
-            <h2>Instalaciones Deportivas</h2>
-            <a href="reservas.php">
-                <button class="btn">Ver Reservas</button>
-            </a>
-        </div>
+        <section class="reservas-deportivas">
+            <div class="instalacion">
+                <img src="img/Futbol.webp" alt="Campo de Fútbol">
+                <h3>Campo de Fútbol</h3>
+                <a href="reservas-futbol.php" class="btn">Reservar</a>
+            </div>
 
-        <!-- Eventos Públicos -->
-        <div class="eventos">
-            <img src="img/eventos.jpg" alt="Eventos Públicos">
-            <h2>Eventos Públicos</h2>
-            <a href="eventos.php">
-                <button class="btn">Ver Eventos</button>
-            </a>
-        </div>
-    </section>
+            <div class="instalacion">
+                <img src="img/Baloncesto.jpg" alt="Pista de Baloncesto">
+                <h3>Pista de Baloncesto</h3>
+                <a href="reservas-baloncesto.php" class="btn">Reservar</a>
+            </div>
+
+            <div class="instalacion">
+                <img src="img/tennis.jpg" alt="Pista de Tenis">
+                <h3>Pista de Tenis</h3>
+                <a href="reservas-tennis.php" class="btn">Reservar</a>
+            </div>
+
+            <div class="instalacion">
+                <img src="img/Padel.jpg" alt="Pista de Padel">
+                <h3>Pista de Padel</h3>
+                <a href="reservas-padel.php" class="btn">Reservar</a>
+            </div>
+
+            <div class="instalacion">
+                <img src="img/Sala.png" alt="Pista de Futbol Sala">
+                <h3>Pista de Futbol Sala</h3>
+                <a href="reservas-sala.php" class="btn">Reservar</a>
+            </div>
+
+            <div class="instalacion">
+                <img src="img/gym.jpg" alt="Gimnasio">
+                <h3>Gimnasio</h3>
+                <a href="reserva-gym.php" class="btn">Reservar</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-contenido">
@@ -88,5 +105,6 @@ session_start();
             </form>
         </div>
     </footer>
+
 </body>
 </html>

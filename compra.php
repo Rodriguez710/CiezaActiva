@@ -2,7 +2,8 @@
 session_start();
 require 'config.php';
 
-if (!isset($_SESSION['usuario_id'])) {
+// Verificar sesión del usuario (corregido)
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
@@ -11,6 +12,7 @@ if (!isset($_SESSION['usuario_id'])) {
 $query_articulos = "SELECT id, nombre, precio FROM Articulos";
 $result_articulos = $conn->query($query_articulos);
 
+// Inicializar carrito si no existe
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
@@ -68,14 +70,15 @@ foreach ($_SESSION['carrito'] as $item) {
 <head>
     <meta charset="UTF-8">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="estilos/compra.css">
+    <link rel="stylesheet" href="css/compras.css">
+    
 </head>
 <body>
 
 <header>
     <h1>Zona de Compra</h1>
     <section>
-        <a href="gestion_articulos.php" class="boton-volver">Volver a Gestión de Artículos</a>
+        <a href="index.php" class="boton-volver">Volver a Gestión de Artículos</a>
     </section>
 </header>
 

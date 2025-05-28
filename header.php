@@ -5,8 +5,8 @@
     <nav>
         <ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="reservas.html">Instalaciones Deportivas</a></li>
-            <li><a href="eventos.html">Eventos Públicos</a></li>
+            <li><a href="reservas.php">Instalaciones Deportivas</a></li>
+            <li><a href="eventos.php">Eventos Públicos</a></li>
         </ul>
     </nav>
     <div class="login-cart">
@@ -39,7 +39,7 @@
             <!-- Si no ha iniciado sesión, mostrar el enlace de login -->
             <a href="login.php"><img src="img/login.png" alt="Login"></a>
         <?php endif; ?>
-        <a href="carrito.php"><img src="img/carrito.png" alt="Carrito"></a>
+        <a href="carrito-reservas.php"><img src="img/carrito.png" alt="Carrito"></a>
     </div>
 </header>
 

@@ -64,12 +64,4 @@ $sql = "CREATE TABLE IF NOT EXISTS Reservas (
     FOREIGN KEY (instalacion_id) REFERENCES Instalaciones(id)
 )";
 mysqli_query($conn, $sql) or die("Error creando tabla Reservas: " . mysqli_error($conn));
-
-// Crear tabla Articulos
-$sql = "CREATE TABLE IF NOT EXISTS Articulos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL
-)";
-mysqli_query($conn, $sql) or die("Error creando tabla Articulos: " . mysqli_error($conn));
 ?>
