@@ -1,13 +1,14 @@
 <?php
-// Devuelve las horas ocupadas para una fecha en formato JSON
+// Devuelve las horas ocupadas para una fecha y una instalación en formato JSON
 header('Content-Type: application/json');
 
-if (!isset($_GET['fecha'])) {
+if (!isset($_GET['fecha']) || !isset($_GET['instalacion'])) {
     echo json_encode([]);
     exit();
 }
 
 $fecha = $_GET['fecha'];
+$instalacion = $_GET['instalacion'];
 $archivo = 'reservas_confirmadas.json';
 
 if (!file_exists($archivo)) {
@@ -23,7 +24,8 @@ if (!$data) {
 
 $ocupadas = [];
 foreach ($data as $reserva) {
-    if ($reserva['instalacion'] === 'Campo de Fútbol' && $reserva['fecha'] === $fecha) {
+    // Filtramos por la instalación y fecha que vienen por GET
+    if ($reserva['instalacion'] === $instalacion && $reserva['fecha'] === $fecha) {
         $ocupadas[] = $reserva['hora'];
     }
 }

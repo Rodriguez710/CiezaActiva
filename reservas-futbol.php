@@ -7,15 +7,15 @@ if (!isset($_SESSION['reservas'])) {
 }
 
 // Procesar nueva reserva
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['fecha']) && isset($_POST['hora'])) {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['instalacion'])) {
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
-    $instalacion = "Campo de Fútbol";
+    $instalacion = $_POST['instalacion'];  // Ahora viene del formulario
 
-    // Verificar si esa fecha y hora ya está reservada
+    // Verificar si esa fecha y hora ya está reservada para la misma instalación
     $ocupado = false;
     foreach ($_SESSION['reservas'] as $res) {
-        if ($res['fecha'] === $fecha && $res['hora'] === $hora) {
+        if ($res['fecha'] === $fecha && $res['hora'] === $hora && $res['instalacion'] === $instalacion) {
             $ocupado = true;
             break;
         }
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['fecha']) && isset($_P
 
         $_SESSION['mensaje_reserva'] = "Reserva agregada al carrito correctamente.";
     } else {
-        $_SESSION['mensaje_reserva'] = "¡Error! Esa hora ya está reservada para la fecha seleccionada.";
+        $_SESSION['mensaje_reserva'] = "¡Error! Esa hora ya está reservada para la fecha e instalación seleccionadas.";
     }
 
     header("Location: reservas-futbol.php");
@@ -61,310 +61,526 @@ $reservas_json = json_encode($_SESSION['reservas']);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Reserva Campo de Fútbol</title>
     <style>
-        /* --- Aquí va tu CSS completo, adaptado --- */
+              /* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+}
 
-        /* Estilos generales para el cuerpo */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-            color: #000000;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
-        }
+/* Cabecera */
+header {
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-        /* Cabecera */
-        header {
-            background-color: #ffffff;
-            color: rgb(255, 255, 255);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+header .logo img {
+    width: 120px;
+    height: auto;
+}
 
-        header .logo img {
-            width: 120px;
-            height: auto;
-        }
+/* Contenedor de los íconos de Login y Carrito */
+header .login-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 130px;
+}
 
-        /* Contenedor de los íconos de Login y Carrito */
-        header .login-cart {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 130px;
-        }
+header .login-cart a {
+    color: #e67c7a;
+    text-decoration: none;
+    margin: 20 20px;
+}
 
-        header .login-cart a {
-            color: #e67c7a;
-            text-decoration: none;
-            margin: 20 20px;
-        }
+header .login-cart a img {
+    width: 50px;
+    height: 50px;
+}
 
-        header .login-cart a img {
-            width: 50px;
-            height: 50px;
-        }
+/* Menú centrado */
+header nav {
+    flex-grow: 1;
+    text-align: center;
+}
 
-        /* Menú centrado */
-        header nav {
-            flex-grow: 1;
-            text-align: center;
-        }
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-        header nav ul {
-            list-style: none;
-            padding: 0;
-        }
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    background-color: #e67c7a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+}
 
-        header nav ul li {
-            display: inline-block;
-            margin-right: 20px;
-            background-color: #e67c7a;
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-        }
+header nav ul li:hover {
+    background-color: #e67c7a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
 
-        header nav ul li:hover {
-            background-color: #e67c7a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
 
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            display: block;
-        }
+header nav ul li a:hover {
+    color: #fff;
+}
 
-        header nav ul li a:hover {
-            color: #fff;
-        }
+/* Estilo de la reserva */
+main {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        /* Estilo de la reserva */
-        main {
-            padding: 20px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.descripcion {
+    text-align: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
 
-        .descripcion {
-            text-align: center;
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-            padding: 10px;
-        }
+.detalles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-        .detalles {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+.detalles .imagen {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+}
 
-        .detalles .imagen {
-            width: 50%;
-            max-width: 500px;
-            padding: 20px;
-        }
+.detalles .imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
 
-        .detalles .imagen img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            display: block;
-            margin: 0 auto;
-        }
+.detalles .informacion {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        .detalles .informacion {
-            width: 50%;
-            max-width: 500px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+.detalles .informacion h3 {
+    color: #e67c7a;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
 
-        .detalles .informacion h3 {
-            color: #e67c7a;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
+.detalles .informacion p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
 
-        .detalles .informacion p {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
+.detalles .informacion label {
+    display: block;
+    margin-top: 10px;
+}
 
-        .detalles .informacion label {
-            display: block;
-            margin-top: 10px;
-        }
+.detalles .informacion select,
+.detalles .informacion input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
 
-        .detalles .informacion select,
-        .detalles .informacion input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
+.detalles .informacion button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e67c7a;
+    color: rgb(59, 59, 59);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .detalles .informacion button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #e67c7a;
-            color: rgb(59, 59, 59);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.detalles .informacion button:hover {
+    background-color: #c35c5c;
+}
 
-        .detalles .informacion button:hover {
-            background-color: #c35c5c;
-        }
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+}
 
-        /* Calendario */
-        #calendar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 420px;
-            margin: 20px auto;
-            background-color: #2b2b2b;
-            color: #fff;
-            border: 2px solid #e67c7a;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #754040;
-            font-size: 16px;
-            padding: 1em;
-        }
+/* Cabecera */
+header {
+    background-color: #5e5e5e;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-        .cal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1em;
-            font-weight: bold;
-            color: #ffcc00;
-        }
+header .logo img {
+    width: 120px;
+    height: auto;
+}
 
-        .cal-header button {
-            background-color: #e67c7a;
-            color: white;
-            border: none;
-            padding: 0.4em 0.8em;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+header .login-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 130px;
+}
 
-        .cal-header button:hover {
-            background-color: #c35c5c;
-        }
+header .login-cart a {
+    color: #ee0707;
+    text-decoration: none;
+    margin: 0 10px;
+}
 
-        .cal-days,
-        .cal-dates {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 0.5em;
-            text-align: center;
-        }
+header .login-cart a img {
+    width: 50px;
+    height: 50px;
+}
 
-        .cal-days div {
-            font-weight: bold;
-            color: #fff; /* Cambiado para mejor visibilidad */
-            background-color: #333;
-            padding: 0.4em 0;
-            border-radius: 4px;
-        }
+header nav {
+    flex-grow: 1;
+    text-align: center;
+}
 
-        .cal-day {
-            cursor: pointer;
-            background: #444;
-            color: white;
-            transition: background 0.3s;
-            padding: 0.7em 0;
-            border-radius: 4px;
-            user-select: none;
-        }
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-        .cal-day:hover:not(.disabled) {
-            background: #666;
-        }
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    background-color: #e60000;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
 
-        .cal-day.selected {
-            background: #2a9d8f;
-            color: white;
-            font-weight: bold;
-        }
+header nav ul li:hover {
+    background-color: #b30000;
+}
 
-        .cal-day.disabled {
-            background-color: #000000;
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
 
-        .empty {
-            visibility: hidden;
-        }
+header nav ul li a:hover {
+    color: #fff;
+}
 
-        .mensaje-reserva {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #e67c7a;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px #b94b4b;
-            z-index: 100;
-            font-weight: bold;
-        }
+/* Cuerpo principal */
+main {
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .detalles {
-                flex-direction: column;
-                align-items: center;
-            }
+.descripcion {
+    text-align: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
 
-            .detalles .imagen,
-            .detalles .informacion {
-                width: 90%;
-                max-width: none;
-                padding: 10px;
-            }
+.detalles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-            header nav ul li {
-                margin-right: 10px;
-                padding: 8px 12px;
-                font-size: 14px;
-            }
+.detalles .imagen {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+}
 
-            header .login-cart a img {
-                width: 40px;
-                height: 40px;
-            }
-        }
+.detalles .imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.detalles .informacion {
+    width: 50%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.detalles .informacion h3 {
+    color: #e60000;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.detalles .informacion p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.detalles .informacion label {
+    display: block;
+    margin-top: 10px;
+}
+
+.detalles .informacion select,
+.detalles .informacion input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #2e2e2e;
+    color: white;
+    border: 1px solid #444;
+}
+
+.detalles .informacion button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.detalles .informacion button:hover {
+    background-color: #b30000;
+}
+
+/* Calendario */
+/* Calendario */
+#calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 20px auto;
+    background-color: #2b2b2b;
+    color: #fff;
+    border: 2px solid #e67c7a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #754040;
+    font-size: 16px;
+    padding: 1em;
+}
+
+.cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    font-weight: bold;
+    color: #ffcc00;
+    width: 100%;
+}
+
+.cal-header button {
+    background-color: #e67c7a;
+    color: white;
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cal-header button:hover {
+    background-color: #c35c5c;
+}
+
+.cal-days,
+.cal-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.cal-days div,
+.cal-dates div {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.cal-days div {
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+}
+
+.cal-day {
+    background: #444;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cal-day:hover:not(.disabled) {
+    background: #666;
+}
+
+.cal-day.selected {
+    background: #2a9d8f;
+    color: white;
+    font-weight: bold;
+}
+
+.cal-day.disabled {
+    background-color: #000000;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.empty {
+    visibility: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+/* Mensaje */
+.mensaje-reserva {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #e60000;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #b94b4b;
+    z-index: 100;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detalles {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detalles .imagen,
+    .detalles .informacion {
+        width: 90%;
+        max-width: none;
+        padding: 10px;
+    }
+
+    header nav ul li {
+        margin-right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    header .login-cart a img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* Mensaje emergente */
+.mensaje-reserva {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #e67c7a;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #b94b4b;
+    z-index: 100;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detalles {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detalles .imagen,
+    .detalles .informacion {
+        width: 90%;
+        max-width: none;
+        padding: 10px;
+    }
+
+    header nav ul li {
+        margin-right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    header .login-cart a img {
+        width: 40px;
+        height: 40px;
+    }
+}
     </style>
 </head>
 
 <body>
-   <?php include 'header.php'; ?>
-
+    <?php include 'header.php'; ?>
 
     <main>
         <div class="descripcion">
@@ -379,6 +595,9 @@ $reservas_json = json_encode($_SESSION['reservas']);
 
             <div class="informacion">
                 <form method="POST" id="reserva-form" action="reservas-futbol.php">
+                    <!-- Campo oculto para pasar la instalación -->
+                    <input type="hidden" name="instalacion" value="Campo de Fútbol" />
+
                     <label for="fecha">Selecciona la fecha:</label>
                     <input type="text" id="fecha" name="fecha" readonly required />
 
@@ -439,7 +658,7 @@ $reservas_json = json_encode($_SESSION['reservas']);
         // Meses y días para el calendario en español
         const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 
-        // Usamos esta función para que el calendario comience el lunes (no domingo)
+        // Función para que el calendario empiece lunes
         function getFirstDayOfMonth(year, month) {
             let day = new Date(year, month, 1).getDay();
             return day === 0 ? 6 : day - 1; // Domingo 0 pasa a 6, lunes 1 pasa a 0
@@ -488,7 +707,7 @@ $reservas_json = json_encode($_SESSION['reservas']);
                     dateDiv.classList.add('selected');
                 }
 
-                // Agregar evento click si no está deshabilitado
+                // Evento click si no deshabilitado
                 if (!dateDiv.classList.contains('disabled')) {
                     dateDiv.addEventListener('click', () => {
                         selectedDate = fullDate;
@@ -535,7 +754,7 @@ $reservas_json = json_encode($_SESSION['reservas']);
             }
         });
 
-        // Ocultar mensaje de reserva tras 3 segundos
+        // Ocultar mensaje tras 3 segundos
         const mensaje = document.getElementById('mensajeReserva');
         if (mensaje) {
             setTimeout(() => {
