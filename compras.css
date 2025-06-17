@@ -1,0 +1,150 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado */
+header {
+    background-color: #5e5e5e;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header .boton-volver {
+    background-color: #e60000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+header .boton-volver:hover {
+    background-color: #b30000;
+}
+
+/* Formularios */
+.formulario {
+    padding: 20px;
+    background-color: #2a2a2a;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.formulario h2 {
+    color: #ffcc00;
+}
+
+.formulario label {
+    display: block;
+    margin-top: 10px;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 4px;
+}
+
+.formulario button {
+    margin-top: 15px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #b30000;
+}
+
+/* Carrito */
+.carrito, .productos {
+    margin: 20px;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
+
+.carrito h2, .productos h2 {
+    color: #ffcc00;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: #e60000;
+}
+
+td {
+    background-color: #1e1e1e;
+}
+
+td button {
+    background-color: #e60000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+td button:hover {
+    background-color: #b30000;
+}
+
+/* Mensajes */
+p {
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .formulario, .carrito, .productos {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+    }
+
+    header .boton-volver {
+        margin-top: 10px;
+    }
+}
