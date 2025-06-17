@@ -3,7 +3,7 @@
 include 'config.php';
 
 // Verificar si el usuario ha iniciado sesión
-session_start();
+
 ?>
 
 <!DOCTYPE html>

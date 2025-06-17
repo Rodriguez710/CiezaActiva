@@ -1,110 +1,58 @@
 <?php
-// Inicia sesión si es necesario
 session_start();
+include 'config.php';
+
+$sql = "SELECT * FROM Instalaciones";
+$result = mysqli_query($conn, $sql);
+if (!$result) {
+    die("Error en la consulta: " . mysqli_error($conn));
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas - Instalaciones Deportivas</title>
-    <link rel="stylesheet" href="css/reservas.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reservas - Instalaciones Deportivas</title>
+<link rel="stylesheet" href="css/reservas.css" />
 </head>
 <body>
 
-    <?php include 'header.php'; ?>
+<?php include 'header.php'; ?>
 
-    <main>
-        <section class="descripcion">
-            <h2>Reservar Instalación Deportiva</h2>
-        </section>
+<main>
+    <section class="descripcion">
+        <h2>Reservar Instalación Deportiva</h2>
+    </section>
 
-        <section class="reservas-deportivas">
-            <div class="instalacion">
-                <img src="img/Futbol.webp" alt="Campo de Fútbol">
-                <h3>Campo de Fútbol</h3>
-                <a href="reservas-futbol.php" class="btn">Reservar</a>
-            </div>
+    <section class="reservas-deportivas">
 
-            <div class="instalacion">
-                <img src="img/Baloncesto.jpg" alt="Pista de Baloncesto">
-                <h3>Pista de Baloncesto</h3>
-                <a href="reservas-baloncesto.php" class="btn">Reservar</a>
-            </div>
+        <?php
+       
 
-            <div class="instalacion">
-                <img src="img/tennis.jpg" alt="Pista de Tenis">
-                <h3>Pista de Tenis</h3>
-                <a href="reservas-tennis.php" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/Padel.jpg" alt="Pista de Padel">
-                <h3>Pista de Padel</h3>
-                <a href="reservas-padel.php" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/Sala.png" alt="Pista de Futbol Sala">
-                <h3>Pista de Futbol Sala</h3>
-                <a href="reservas-sala.php" class="btn">Reservar</a>
-            </div>
-
-            <div class="instalacion">
-                <img src="img/gym.jpg" alt="Gimnasio">
-                <h3>Gimnasio</h3>
-                <a href="reserva-gym.php" class="btn">Reservar</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-contenido">
-            <div class="contacto">
-                <h3>Contacto</h3>
-                <p>📞 Teléfono: 123-456-789</p>
-                <p>📧 Email: contacto@empresa.com</p>
-                <p>📍 Dirección: Calle Ejemplo 123, Ciudad</p>
-                <p>🕒 Horario: Lunes - Viernes, 9 AM - 6 PM</p>
-            </div>
-            
-            <div class="redes-sociales">
-                <h3>Redes Sociales</h3>
-                <div class="redes">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="img/instagram.png" alt="Instagram">
-                        <p>Instagram</p>
-                    </a>
-                    <a href="https://www.twitter.com" target="_blank">
-                        <img src="img/twitter.png" alt="Twitter">
-                        <p>Twitter</p>
-                    </a>
-                    <a href="https://www.tiktok.com" target="_blank">
-                        <img src="img/tiktok.png" alt="TikTok">
-                        <p>TikTok</p>
-                    </a>
+        if (mysqli_num_rows($result) > 0) {
+            while ($instalacion = mysqli_fetch_assoc($result)) {
+                $rutaImagen = $instalacion['imagen'];
+                $linkReserva = "reservar_instalacion.php?id=" . urlencode($instalacion['id']);
+                ?>
+                <div class="instalacion">
+                    <img src="<?= htmlspecialchars($rutaImagen) ?>" alt="<?= htmlspecialchars($instalacion['nombre']) ?>" />
+                    <h3><?= htmlspecialchars($instalacion['nombre']) ?></h3>
+                    <p>Precio por hora: <?= number_format($instalacion['precio'], 2) ?> €</p>
+                    <a href="<?= htmlspecialchars($linkReserva) ?>" class="btn">Reservar</a>
                 </div>
-            </div>
-            
-            <div class="enlaces-adicionales">
-                <h3>Enlaces Rápidos</h3>
-                <ul>
-                    <li><a href="terminos.html">Términos y Condiciones</a></li>
-                    <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
-                    <li><a href="ayuda.html">Ayuda</a></li>
-                    <li><a href="quienes-somos.html">Sobre Nosotros</a></li>
-                </ul>
-            </div>
-        </div>
-    
-        <div class="suscripcion">
-            <h3>Suscríbete a nuestro boletín</h3>
-            <form action="#" method="POST">
-                <input type="email" placeholder="Ingresa tu correo" required>
-                <button type="submit">Suscribirse</button>
-            </form>
-        </div>
-    </footer>
+                <?php
+            }
+        } else {
+            echo "<p>No hay instalaciones disponibles.</p>";
+        }
+        ?>
+
+    </section>
+</main>
+
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
