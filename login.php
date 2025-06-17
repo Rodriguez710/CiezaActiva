@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mensaje_error = "Contraseña incorrecta.";
             }
         } else {
-            $mensaje_error = "Correo no registrado. <a href='registro.html'>Regístrate aquí</a>";
+            $mensaje_error = "Correo no registrado. <a href='registro.php'>Regístrate aquí</a>";
         }
 
         $stmt->close();
@@ -74,18 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="exito"><?= $mensaje_exito ?></div>
             <?php endif; ?>
 
-            <!-- FORMULARIO ENLAZADO A login.php -->
-            <form action="login.php" method="POST">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" required>
+           <!-- FORMULARIO ENLAZADO A login.php -->
+<form action="login.php" method="POST">
+    <label for="email">Correo Electrónico</label>
+    <input type="email" id="email" name="email" required>
 
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password">
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password">
 
-                <button type="submit" class="btn">Iniciar Sesión</button>
+    <button type="submit" class="btn">Iniciar Sesión</button>
 
-              
-            </form>
+    <!-- Enlace a la página de registro -->
+    <p>¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
+</form>
+
         </section>
     </main>
 

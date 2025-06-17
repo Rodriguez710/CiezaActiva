@@ -598,6 +598,9 @@ main {
                     <!-- Campo oculto para pasar la instalación -->
                     <input type="hidden" name="instalacion" value="Pista de baloncesto" />
 
+                    <!-- Campo oculto con el precio de esta instalación -->
+                    <input type="hidden" name="precio" value="12.50" />
+
                     <label for="fecha">Selecciona la fecha:</label>
                     <input type="text" id="fecha" name="fecha" readonly required />
 
@@ -655,7 +658,7 @@ main {
         let today = new Date();
         let selectedDate = null;
 
-        // Meses y días para el calendario en español
+        // Meses y días para el calendario
         const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 
         // Función para que el calendario empiece lunes
@@ -670,7 +673,7 @@ main {
         function renderCalendar(month, year) {
             calDates.innerHTML = "";
 
-            // Mostrar mes y año en formato largo en español
+            // Mostrar mes y año en formato largo
             monthYear.textContent = new Date(year, month).toLocaleDateString('es-ES', {
                 month: 'long',
                 year: 'numeric'
@@ -707,7 +710,7 @@ main {
                     dateDiv.classList.add('selected');
                 }
 
-                // Evento click si no deshabilitado
+                
                 if (!dateDiv.classList.contains('disabled')) {
                     dateDiv.addEventListener('click', () => {
                         selectedDate = fullDate;

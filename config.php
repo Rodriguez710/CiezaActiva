@@ -38,7 +38,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Instalaciones (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
     ubicacion VARCHAR(100),
-    tipo VARCHAR(50)
+    tipo VARCHAR(50)A
 )";
 mysqli_query($conn, $sql) or die("Error creando tabla Instalaciones: " . mysqli_error($conn));
 
